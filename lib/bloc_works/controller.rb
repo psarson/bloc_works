@@ -1,5 +1,5 @@
-=begin
 require "erubis"
+require "bloc_works/utility"
 
 module BlocWorks
    class Controller
@@ -14,7 +14,7 @@ module BlocWorks
        eruby.result(locals.merge(env: @env))
      end
 
-
+    
     def controller_dir
       klass = self.class.to_s
       klass.slice!("Controller")
@@ -22,4 +22,3 @@ module BlocWorks
     end
   end
 end
-=end 
