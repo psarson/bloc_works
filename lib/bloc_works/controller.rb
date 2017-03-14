@@ -14,7 +14,7 @@ module BlocWorks
        eruby.result(locals.merge(env: @env))
      end
 
-    
+
     def controller_dir
       klass = self.class.to_s
       klass.slice!("Controller")
