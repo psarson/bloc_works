@@ -3,8 +3,10 @@ require "bloc_works/utility"
 
 module BlocWorks
    class Controller
+     attr_accessor :request
+
      def initialize(env)
-       @env = env
+       @request = env
      end
 
      def render(view, locals = {})
@@ -14,8 +16,7 @@ module BlocWorks
        eruby.result(locals.merge(env: @env))
      end
 
-
-    def controller_dir
+     def controller_dir
       klass = self.class.to_s
       klass.slice!("Controller")
       BlocWorks.snake_case(klass)

@@ -1,12 +1,16 @@
-include RSpec
-require 'bloc_works'
+require_relative '../lib/bloc_works.rb'
+require "rack/test"
+require 'test/unit'
 
-RSpec.describe BlocWorks do
-  it "has a version number" do
-    expect(BlocWorks::VERSION).not_to be nil
+class BlocWorksTest < Test::Unit::TestCase
+  include Rack::Test::Methods
+
+  def app
+    BlocWorks::Application.new
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  def test_favicon
+    get '/favicon.ico'
+    assert_equal last_response.status, 404
   end
 end
