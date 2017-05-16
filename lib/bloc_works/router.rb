@@ -29,8 +29,9 @@ module BlocWorks
 
       @router.look_up_url(env["PATH_INFO"])
     end
+  end
 
-   class Router
+  class Router
      def initialize
        @rules = []
      end
@@ -105,4 +106,5 @@ module BlocWorks
        raise "Destination no found: #{destination}"
      end
    end
+
 end
