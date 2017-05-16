@@ -1,5 +1,4 @@
 require "erubis"
-require "bloc_works/utility"
 
 module BlocWorks
   class Controller
