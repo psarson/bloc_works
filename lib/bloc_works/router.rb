@@ -16,6 +16,12 @@ module BlocWorks
      end
    end
 
+   def route(&block)
+       @router ||= Router.new
+       @router.instance_eval(&block)
+     end
+   end
+
    def get_rack_app(env)
       if @router.nil?
         raise "No routes defined"
@@ -23,12 +29,6 @@ module BlocWorks
 
       @router.look_up_url(env["PATH_INFO"])
     end
-
-   def route(&block)
-       @router ||= Router.new
-       @router.instance_eval(&block)
-     end
-   end
 
    class Router
      def initialize

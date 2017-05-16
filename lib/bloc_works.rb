@@ -1,7 +1,7 @@
 require_relative "bloc_works/version"
-require_relative "bloc-works/controller"
-require_relative "bloc-works/dependencies"
-require_relative "bloc-works/router"
+require_relative "bloc_works/controller"
+require_relative "bloc_works/dependencies"
+require_relative "bloc_works/router"
 
 module BlocWorks
   class Application
