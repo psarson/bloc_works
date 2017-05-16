@@ -1,4 +1,7 @@
-require "bloc_works/version"
+require_relative "bloc_works/version"
+require_relative "bloc-works/controller"
+require_relative "bloc-works/dependencies"
+require_relative "bloc-works/router"
 
 module BlocWorks
   class Application
@@ -7,17 +10,8 @@ module BlocWorks
          return [404, {'Content-Type' => 'text/html'}, []]
        end
 
-       klass, action = controller_and_action(env)
-       controller = klass.new(env)
-       text = controller.send(action)
-
-       if controller.has_response?
-         status, header, response = controller.get_response
-         [status, header, [response.body].flatten]
-       else
-         [200, {'Content-Type' => 'text/html'}, [text]]
-       end
-
+       rack_app = get_rack_app(env)
+       rack_app.call(env)
     end
   end
 end
